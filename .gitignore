@@ -1,0 +1,81 @@
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Dependencies
+# =========================
+node_modules/
+vendor/
+
+# =========================
+# Frontend build artifacts
+# =========================
+dist/
+build/
+.next/
+out/
+
+# =========================
+# TypeScript generated files
+# =========================
+*.tsbuildinfo
+
+# =========================
+# Laravel generated/runtime files
+# =========================
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/testing/*
+backend/storage/framework/views/*
+backend/storage/logs/*
+backend/storage/app/private/*
+backend/storage/app/public/*
+backend/storage/backups/
+
+# Keep Laravel directory placeholders
+!backend/storage/framework/cache/.gitignore
+!backend/storage/framework/sessions/.gitignore
+!backend/storage/framework/testing/.gitignore
+!backend/storage/framework/views/.gitignore
+!backend/storage/logs/.gitignore
+!backend/storage/app/private/.gitignore
+!backend/storage/app/public/.gitignore
+
+# =========================
+# Laravel generated test/cache
+# =========================
+.phpunit.result.cache
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Temporary / backup files
+# =========================
+*.tmp
+*.temp
+*.bak
+*.swp
+*~

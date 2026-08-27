@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductImageResource;
+use App\Models\Product;
+use App\Models\ProductImage;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+
+class ProductImageController extends Controller
+{
+    public function index(Product $product): AnonymousResourceCollection
+    {
+        return ProductImageResource::collection($product->images);
+    }
+
+    public function store(Request $request, Product $product): JsonResponse
+    {
+        $validated = $request->validate([
+            'image_url' => ['required', 'string', 'url'],
+            'is_primary' => ['nullable', 'boolean'],
+        ]);
+
+        $image = $product->images()->create([
+            'image_url' => $validated['image_url'],
+            'is_primary' => $validated['is_primary'] ?? false,
+        ]);
+
+        return (new ProductImageResource($image))
+            ->response()
+            ->setStatusCode(201);
+    }
+
+    public function destroy(Product $product, ProductImage $image): JsonResponse
+    {
+        $image->delete();
+
+        return response()->json([
+            'message' => 'Product image deleted successfully.',
+        ]);
+    }
+}

@@ -2,6 +2,34 @@
 
 return [
 
+    'n8n' => [
+        'order_webhook_url' => env('N8N_ORDER_WEBHOOK_URL'),
+        'webhook_secret' => env('N8N_WEBHOOK_SECRET'),
+    ],
+
+        'cloudinary' => [
+        'url' => env('CLOUDINARY_URL'),
+        'cloud_url' => env('CLOUDINARY_URL'),
+        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        'api_key' => env('CLOUDINARY_API_KEY'),
+        'api_secret' => env('CLOUDINARY_SECRET_KEY') ?? env('CLOUDINARY_API_SECRET'),
+    ],
+
+        'groq' => [
+        'api_key' => env('GROQ_API_KEY'),
+        'model' => env('GROQ_MODEL', 'openai/gpt-oss-120b'),
+        'url' => env(
+            'GROQ_URL',
+            'https://api.groq.com/openai/v1/chat/completions'
+        ),
+    ],
+
+        'stripe' => [
+        'secret' => env('STRIPE_SECRET_KEY'),
+        'publishable' => env('STRIPE_PUBLISHABLE_KEY'),
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -16,6 +44,11 @@ return [
 
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
+    ],
+
+    'ollama' => [
+    'url' => env('OLLAMA_URL', 'http://ollama:11434'),
+    'model' => env('OLLAMA_MODEL', 'llama3.2:1b'),
     ],
 
     'resend' => [
