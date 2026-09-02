@@ -32,6 +32,8 @@ jobs:
       DB_CONNECTION: sqlite
       DB_DATABASE: database/database.sqlite
 
+      GROQ_API_KEY: testing
+
       CACHE_STORE: array
       SESSION_DRIVER: array
       QUEUE_CONNECTION: sync

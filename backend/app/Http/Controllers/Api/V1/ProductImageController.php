@@ -85,8 +85,7 @@ class ProductImageController extends Controller
 
     public function destroy(
         Product $product,
-        ProductImage $image,
-        Cloudinary $cloudinary
+        ProductImage $image
     ): JsonResponse {
         /*
          * Make sure this image actually belongs
@@ -103,7 +102,7 @@ class ProductImageController extends Controller
          * 🌟 SYNCHRONIZED: Changed 'public_id' to 'cloudinary_public_id'
          */
         if ($image->cloudinary_public_id) {
-            $cloudinary
+            app(Cloudinary::class)
                 ->uploadApi()
                 ->destroy($image->cloudinary_public_id);
         }
