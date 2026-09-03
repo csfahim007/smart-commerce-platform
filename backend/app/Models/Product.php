@@ -23,6 +23,7 @@ class Product extends Model
         'slug',
         'sku',
         'description',
+        'attributes',
         'ai_tags',
         'price',
         'stock',
@@ -63,11 +64,12 @@ class Product extends Model
      */
     protected function casts(): array
     {
-        return [
-            'price' => 'decimal:2',
-            'stock' => 'integer',
-            'is_active' => 'boolean',
-            'ai_tags' => 'array', 
-        ];
+       return [
+        'price' => 'decimal:2',
+        'stock' => 'integer',
+        'is_active' => 'boolean',
+        'attributes' => 'array',
+        'ai_tags' => 'array',
+    ];
     }
 }
