@@ -95,8 +95,8 @@ log "Waiting for Laravel API"
 
 sleep 3
 
-if ! sudo -n systemctl is-active --quiet "$API_SERVICE"; then
-    sudo -n systemctl status "$API_SERVICE" --no-pager || true
+if [[ "$(sudo -n systemctl is-active ai-ecommerce-api.service)" != "active" ]]; then
+    sudo -n systemctl status ai-ecommerce-api.service || true
     fail "Laravel API service is not active"
 fi
 
@@ -148,7 +148,7 @@ fi
 log "Deployment completed successfully"
 
 printf '\nCommit deployed: %s\n' "$(git rev-parse --short HEAD)"
-printf 'API:            %s\n' "$(sudo -n systemctl is-active "$API_SERVICE")"
+printf 'API:            %s\n' "$(sudo -n systemctl is-active ai-ecommerce-api.service)"
 printf 'Queue worker:   %s\n' "$(sudo -n supervisorctl status "$WORKER_GROUP")"
 printf 'Frontend:       %s\n' "$(docker inspect -f '{{.State.Status}}' "$FRONTEND_CONTAINER")"
 
