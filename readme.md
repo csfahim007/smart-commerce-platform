@@ -1585,7 +1585,7 @@ Admin@12345
 
 ## 📄 License
 
-**Copyright © 2026 [Your Name]. All Rights Reserved.**
+**Copyright © 2026 [Fahim]. All Rights Reserved.**
 
 This project is proprietary software and is provided for demonstration and portfolio purposes only.
 
