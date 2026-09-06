@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 
 set -Eeuo pipefail
 
@@ -89,27 +88,27 @@ npm run build
 
 log "Restarting Laravel API"
 
-sudo systemctl restart "$API_SERVICE"
+sudo -n systemctl restart "$API_SERVICE"
 
 log "Waiting for Laravel API"
 
 sleep 3
 
-if ! sudo systemctl is-active --quiet "$API_SERVICE"; then
-    sudo systemctl status "$API_SERVICE" --no-pager || true
+if ! sudo -n systemctl is-active --quiet "$API_SERVICE"; then
+    sudo -n systemctl status "$API_SERVICE" --no-pager || true
     fail "Laravel API service is not active"
 fi
 
 log "Restarting queue worker"
 
-sudo supervisorctl restart "$WORKER_GROUP"
+sudo -n supervisorctl restart "$WORKER_GROUP"
 
 sleep 2
 
 log "Checking queue worker"
 
-if ! sudo supervisorctl status "$WORKER_GROUP" | grep -q "RUNNING"; then
-    sudo supervisorctl status "$WORKER_GROUP" || true
+if ! sudo -n supervisorctl status "$WORKER_GROUP" | grep -q "RUNNING"; then
+    sudo -n supervisorctl status "$WORKER_GROUP" || true
     fail "Queue worker is not running"
 fi
 
@@ -148,6 +147,7 @@ fi
 log "Deployment completed successfully"
 
 printf '\nCommit deployed: %s\n' "$(git rev-parse --short HEAD)"
-printf 'API:            %s\n' "$(sudo systemctl is-active "$API_SERVICE")"
-printf 'Queue worker:   %s\n' "$(sudo supervisorctl status "$WORKER_GROUP")"
+printf 'API:            %s\n' "$(sudo -n systemctl is-active "$API_SERVICE")"
+printf 'Queue worker:   %s\n' "$(sudo -n supervisorctl status "$WORKER_GROUP")"
 printf 'Frontend:       %s\n' "$(docker inspect -f '{{.State.Status}}' "$FRONTEND_CONTAINER")"
+
