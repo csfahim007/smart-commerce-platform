@@ -94,3 +94,19 @@ jobs:
 
       - name: Build production frontend
         run: npm run build
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 10028
+          script: |
+            cd /home/administrator/projects/ai-ecommerce-platform
+            ./scripts/deploy.sh
