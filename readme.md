@@ -1582,3 +1582,24 @@ Admin@12345
 <p align="center">
   Built with ❤️ using Laravel, React, Groq, Stripe, Redis, Docker and modern web architecture.
 </p>
+
+## 📄 License
+
+**Copyright © 2026 [Your Name]. All Rights Reserved.**
+
+This project is proprietary software and is provided for demonstration and portfolio purposes only.
+
+You may view the source code for evaluation, learning, and interview purposes, but you may not, without prior written permission from the copyright holder:
+
+- Copy or redistribute the source code
+- Publish or mirror the repository
+- Sell, sublicense, or commercially exploit the software
+- Modify and redistribute derivative versions
+- Reuse substantial portions of the code in another project
+- Present the project or its source code as your own
+
+Public visibility of this repository does not grant permission to copy,
+redistribute, or commercially reuse the source code.
+
+For licensing or commercial-use inquiries, please contact the project owner.
+
