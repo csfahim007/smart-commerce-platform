@@ -1,5 +1,17 @@
 import { useState } from 'react'
-import { ArrowRight, Sparkles, ChevronDown, LayoutGrid } from 'lucide-react'
+import {
+  ArrowRight,
+  Sparkles,
+  ChevronDown,
+  LayoutGrid,
+  ShieldCheck,
+  Truck,
+  Headphones,
+  Zap,
+  Search,
+  ShoppingBag,
+  MessageSquare,
+} from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import {
@@ -32,18 +44,12 @@ export default function HomePage() {
     <div className="space-y-12 overflow-x-hidden px-4 pb-10 sm:space-y-16 sm:px-0">
       {/* ===================== HERO ===================== */}
       <section className="relative overflow-hidden rounded-3xl bg-neutral-950 text-white">
-        {/* Rich interactive background */}
         <div className="pointer-events-none absolute inset-0">
-          {/* Base gradient covering full width */}
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900 to-violet-950/80" />
-
-          {/* Color orbs */}
           <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-violet-600/30 blur-[100px]" />
           <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-cyan-500/25 blur-[90px]" />
           <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-[80px]" />
           <div className="absolute -bottom-20 right-1/4 h-56 w-56 rounded-full bg-blue-500/15 blur-[70px]" />
-
-          {/* Soft grid */}
           <div
             className="absolute inset-0 opacity-[0.06]"
             style={{
@@ -52,13 +58,10 @@ export default function HomePage() {
               backgroundSize: '40px 40px',
             }}
           />
-
-          {/* Right side decorative glow (fixes the pure black area) */}
           <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-violet-500/10 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 flex flex-col gap-10 px-5 py-14 sm:px-10 sm:py-16 lg:flex-row lg:items-center lg:gap-16 lg:px-16 lg:py-24">
-          {/* Left content */}
           <div className="max-w-xl flex-1">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5 text-violet-300" />
@@ -90,24 +93,43 @@ export default function HomePage() {
                 to="/ai-assistant"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10 sm:px-6 sm:py-3.5"
               >
-                <Sparkles className="h-4 w-4 text-violet-300 transition group-hover:scale-110" />
                 Ask AI
               </Link>
             </div>
           </div>
 
-          {/* Right decorative panel (desktop only) */}
+          {/* Calligraphic design */}
           <div className="hidden flex-1 lg:block">
-            <div className="relative mx-auto aspect-square max-w-sm">
+            <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center">
               <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md" />
-              <div className="absolute inset-4 rounded-2xl border border-white/10 bg-gradient-to-br from-violet-500/20 to-cyan-500/10" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <Sparkles className="mx-auto h-10 w-10 text-violet-300/80" />
-                  <p className="mt-3 text-sm font-medium text-white/70">
-                    Smart recommendations
-                  </p>
-                </div>
+              <div className="absolute inset-6 rounded-2xl border border-white/10" />
+
+              <div className="relative z-10 select-none text-center">
+                <p
+                  className="text-5xl font-light tracking-wide text-white/90"
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontStyle: 'italic' }}
+                >
+                  Discover
+                </p>
+                <p
+                  className="mt-1 text-6xl font-light leading-none text-transparent"
+                  style={{
+                    fontFamily: 'Georgia, "Times New Roman", serif',
+                    fontStyle: 'italic',
+                    background: 'linear-gradient(135deg, #e9d5ff 0%, #ffffff 50%, #a5f3fc 100%)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  Beauty
+                </p>
+                <div className="mx-auto mt-4 h-px w-16 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                <p
+                  className="mt-4 text-sm tracking-[0.35em] text-white/50 uppercase"
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                >
+                  Curated for you
+                </p>
               </div>
             </div>
           </div>
@@ -117,7 +139,6 @@ export default function HomePage() {
       {/* ===================== CATEGORIES ===================== */}
       {activeCategories.length > 0 && (
         <section>
-          {/* Mobile: collapsible dropdown style */}
           <div className="sm:hidden">
             <button
               type="button"
@@ -175,7 +196,6 @@ export default function HomePage() {
             )}
           </div>
 
-          {/* Tablet + Desktop: redesigned grid */}
           <div className="hidden sm:block">
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
@@ -203,7 +223,6 @@ export default function HomePage() {
                   to={`/products?category_id=${category.id}`}
                   className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/50"
                 >
-                  {/* subtle accent bar */}
                   <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-violet-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
 
                   <div className="flex items-start justify-between gap-3">
@@ -214,9 +233,7 @@ export default function HomePage() {
                       {category.products_count !== undefined && (
                         <p className="mt-1.5 text-sm text-neutral-500">
                           {category.products_count}{' '}
-                          {category.products_count === 1
-                            ? 'product'
-                            : 'products'}
+                          {category.products_count === 1 ? 'product' : 'products'}
                         </p>
                       )}
                     </div>
@@ -275,6 +292,143 @@ export default function HomePage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* ===================== WHY SHOP WITH US ===================== */}
+      <section>
+        <div className="mb-6 text-center sm:mb-8">
+          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+            Benefits
+          </p>
+          <h2 className="mt-1 text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
+            Why shop with us
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+          {[
+            {
+              icon: ShieldCheck,
+              title: 'Secure shopping',
+              desc: 'Safe payments & data protection',
+            },
+            {
+              icon: Truck,
+              title: 'Fast delivery',
+              desc: 'Quick shipping across the country',
+            },
+            {
+              icon: Headphones,
+              title: 'Support',
+              desc: 'Friendly help when you need it',
+            },
+            {
+              icon: Zap,
+              title: 'AI recommendations',
+              desc: 'Find products that match you',
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-neutral-200 bg-white p-4 text-center transition hover:border-neutral-300 hover:shadow-md sm:p-5"
+            >
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 text-neutral-700 sm:h-12 sm:w-12">
+                <item.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+              </div>
+              <h3 className="mt-3 text-sm font-semibold text-neutral-900 sm:text-base">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===================== HOW IT WORKS ===================== */}
+      <section className="rounded-3xl border border-neutral-200 bg-white px-4 py-8 sm:px-8 sm:py-10">
+        <div className="mb-6 text-center sm:mb-8">
+          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+            Simple process
+          </p>
+          <h2 className="mt-1 text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
+            How it works
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
+          {[
+            {
+              step: '01',
+              icon: Search,
+              title: 'Browse or search',
+              desc: 'Explore categories or use AI to describe what you need.',
+            },
+            {
+              step: '02',
+              icon: ShoppingBag,
+              title: 'Add to cart',
+              desc: 'Select your favorite products and add them to your cart.',
+            },
+            {
+              step: '03',
+              icon: MessageSquare,
+              title: 'Get help from AI',
+              desc: 'Not sure? Ask our AI assistant for personalized suggestions.',
+            },
+          ].map((item) => (
+            <div key={item.step} className="relative text-center sm:text-left">
+              <div className="mb-3 inline-flex items-center gap-2 sm:mb-4">
+                <span className="text-xs font-bold text-violet-600">
+                  {item.step}
+                </span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+                  <item.icon className="h-4 w-4" />
+                </div>
+              </div>
+              <h3 className="text-base font-semibold text-neutral-900">
+                {item.title}
+              </h3>
+              <p className="mt-1.5 text-sm text-neutral-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===================== FINAL CTA ===================== */}
+      <section className="relative overflow-hidden rounded-3xl bg-neutral-950 px-5 py-10 text-white sm:px-10 sm:py-14">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-violet-600/25 blur-[80px]" />
+          <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-cyan-500/20 blur-[80px]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Ready to find something you’ll love?
+          </h2>
+          <p className="mt-3 text-sm text-neutral-400 sm:text-base">
+            Start browsing our curated collection or let the AI assistant guide
+            you to the perfect product.
+          </p>
+
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
+            <Link
+              to="/products"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-100 sm:w-auto"
+            >
+              Start shopping
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+            <Link
+              to="/ai-assistant"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+            >
+              Ask AI
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   )
