@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 set -Eeuo pipefail
 
@@ -88,7 +89,7 @@ npm run build
 
 log "Restarting Laravel API"
 
-sudo -n systemctl restart "$API_SERVICE"
+sudo -n systemctl restart ai-ecommerce-api.service
 
 log "Waiting for Laravel API"
 
