@@ -50,7 +50,7 @@ export default function ProductDetailsPage() {
           onSuccess: () => {
             setCartMessage('Item added to cart!')
           },
-          onError: (err) => {
+          onError: (err:any) => {
             setCartMessage(err.message || 'Failed to add item to cart.')
           },
         },

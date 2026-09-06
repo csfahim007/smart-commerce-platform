@@ -1,4 +1,5 @@
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, Sparkles, ChevronDown, LayoutGrid } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import {
@@ -21,121 +22,224 @@ export default function HomePage() {
   const products = productsQuery.data?.data ?? []
   const categories = categoriesQuery.data ?? []
 
+  const [categoriesOpen, setCategoriesOpen] = useState(false)
+
+  const activeCategories = categories
+    .filter((category: any) => category.is_active)
+    .slice(0, 8)
+
   return (
-    <div className="space-y-16 pb-10">
-      {/* Hero – more interactive & layered */}
-      <section className="relative overflow-hidden rounded-3xl bg-neutral-950 px-6 py-16 text-white sm:px-10 lg:px-16 lg:py-24">
-        {/* Decorative background layers */}
+    <div className="space-y-12 overflow-x-hidden px-4 pb-10 sm:space-y-16 sm:px-0">
+      {/* ===================== HERO ===================== */}
+      <section className="relative overflow-hidden rounded-3xl bg-neutral-950 text-white">
+        {/* Rich interactive background */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl" />
-          <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
-          <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/10 blur-3xl" />
-          {/* Subtle grid pattern */}
+          {/* Base gradient covering full width */}
+          <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900 to-violet-950/80" />
+
+          {/* Color orbs */}
+          <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-violet-600/30 blur-[100px]" />
+          <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-cyan-500/25 blur-[90px]" />
+          <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-[80px]" />
+          <div className="absolute -bottom-20 right-1/4 h-56 w-56 rounded-full bg-blue-500/15 blur-[70px]" />
+
+          {/* Soft grid */}
           <div
-            className="absolute inset-0 opacity-[0.07]"
+            className="absolute inset-0 opacity-[0.06]"
             style={{
               backgroundImage:
-                'linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px)',
-              backgroundSize: '48px 48px',
+                'linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
             }}
           />
+
+          {/* Right side decorative glow (fixes the pure black area) */}
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-violet-500/10 via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-2xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold backdrop-blur-sm transition hover:bg-white/15">
-            <Sparkles className="h-3.5 w-3.5 text-violet-300" />
-            AI-powered shopping
+        <div className="relative z-10 flex flex-col gap-10 px-5 py-14 sm:px-10 sm:py-16 lg:flex-row lg:items-center lg:gap-16 lg:px-16 lg:py-24">
+          {/* Left content */}
+          <div className="max-w-xl flex-1">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5 text-violet-300" />
+              AI-powered shopping
+            </div>
+
+            <h1 className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Discover products
+              <span className="mt-1 block bg-gradient-to-r from-violet-200 via-white to-cyan-200 bg-clip-text text-transparent">
+                you'll actually love.
+              </span>
+            </h1>
+
+            <p className="mt-5 text-sm leading-6 text-neutral-300 sm:mt-6 sm:text-lg sm:leading-7">
+              Browse our curated collection or use the AI assistant to find
+              products based on what you're looking for.
+            </p>
+
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
+              <Link
+                to="/products"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 shadow-lg shadow-white/10 transition hover:bg-neutral-100 sm:px-6 sm:py-3.5"
+              >
+                Shop products
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+
+              <Link
+                to="/ai-assistant"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10 sm:px-6 sm:py-3.5"
+              >
+                <Sparkles className="h-4 w-4 text-violet-300 transition group-hover:scale-110" />
+                Ask AI
+              </Link>
+            </div>
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Discover products
-            <span className="mt-1 block bg-gradient-to-r from-neutral-300 via-white to-neutral-400 bg-clip-text text-transparent">
-              you'll actually love.
-            </span>
-          </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-7 text-neutral-400 sm:text-lg">
-            Browse our curated collection or use the AI assistant to find
-            products based on what you're looking for.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
-              to="/products"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-white/10 transition hover:bg-neutral-100 hover:shadow-white/20"
-            >
-              Shop products
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-
-            <Link
-              to="/ai-assistant"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10"
-            >
-              <Sparkles className="h-4 w-4 text-violet-300 transition group-hover:scale-110" />
-              Ask AI
-            </Link>
+          {/* Right decorative panel (desktop only) */}
+          <div className="hidden flex-1 lg:block">
+            <div className="relative mx-auto aspect-square max-w-sm">
+              <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md" />
+              <div className="absolute inset-4 rounded-2xl border border-white/10 bg-gradient-to-br from-violet-500/20 to-cyan-500/10" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <Sparkles className="mx-auto h-10 w-10 text-violet-300/80" />
+                  <p className="mt-3 text-sm font-medium text-white/70">
+                    Smart recommendations
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      {categories.length > 0 && (
+      {/* ===================== CATEGORIES ===================== */}
+      {activeCategories.length > 0 && (
         <section>
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                Browse
-              </p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-neutral-900">
-                Shop by category
-              </h2>
-            </div>
-
-            <Link
-              to="/products"
-              className="hidden items-center gap-1 text-sm font-semibold text-neutral-600 transition hover:text-neutral-950 sm:flex"
+          {/* Mobile: collapsible dropdown style */}
+          <div className="sm:hidden">
+            <button
+              type="button"
+              onClick={() => setCategoriesOpen((v) => !v)}
+              className="flex w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-3.5 shadow-sm"
             >
-              View all
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-100">
+                  <LayoutGrid className="h-4 w-4 text-neutral-700" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-neutral-900">
+                    Shop by category
+                  </p>
+                  <p className="text-xs text-neutral-500">
+                    {activeCategories.length} categories
+                  </p>
+                </div>
+              </div>
+              <ChevronDown
+                className={`h-5 w-5 text-neutral-500 transition-transform ${
+                  categoriesOpen ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+
+            {categoriesOpen && (
+              <div className="mt-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+                <div className="divide-y divide-neutral-100">
+                  {activeCategories.map((category: any) => (
+                    <Link
+                      key={category.id}
+                      to={`/products?category_id=${category.id}`}
+                      className="flex items-center justify-between px-4 py-3.5 transition hover:bg-neutral-50 active:bg-neutral-100"
+                    >
+                      <span className="text-sm font-medium text-neutral-900">
+                        {category.name}
+                      </span>
+                      {category.products_count !== undefined && (
+                        <span className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600">
+                          {category.products_count}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  to="/products"
+                  className="flex items-center justify-center gap-1 border-t border-neutral-100 px-4 py-3 text-sm font-semibold text-neutral-700 hover:bg-neutral-50"
+                >
+                  View all products
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {categories
-              .filter((category) => category.is_active)
-              .slice(0, 8)
-              .map((category) => (
+          {/* Tablet + Desktop: redesigned grid */}
+          <div className="hidden sm:block">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                  Browse
+                </p>
+                <h2 className="mt-1 text-2xl font-bold tracking-tight text-neutral-900">
+                  Shop by category
+                </h2>
+              </div>
+
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-neutral-600 transition hover:text-neutral-950"
+              >
+                View all
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+              {activeCategories.map((category: any) => (
                 <Link
                   key={category.id}
                   to={`/products?category_id=${category.id}`}
-                  className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/60"
+                  className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/50"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  <div className="relative">
-                    <p className="font-semibold text-neutral-900 group-hover:text-neutral-950">
-                      {category.name}
-                    </p>
-                    {category.products_count !== undefined && (
-                      <p className="mt-1 text-sm text-neutral-500">
-                        {category.products_count} products
+                  {/* subtle accent bar */}
+                  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-violet-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
+
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-semibold text-neutral-900 group-hover:text-neutral-950">
+                        {category.name}
                       </p>
-                    )}
+                      {category.products_count !== undefined && (
+                        <p className="mt-1.5 text-sm text-neutral-500">
+                          {category.products_count}{' '}
+                          {category.products_count === 1
+                            ? 'product'
+                            : 'products'}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-neutral-500 transition group-hover:bg-violet-50 group-hover:text-violet-600">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
                   </div>
                 </Link>
               ))}
+            </div>
           </div>
         </section>
       )}
 
-      {/* Featured Products – 3 columns on mobile */}
+      {/* ===================== FEATURED PRODUCTS ===================== */}
       <section>
-        <div className="mb-6 flex items-end justify-between gap-4">
+        <div className="mb-4 flex items-end justify-between gap-4 sm:mb-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
               Featured
             </p>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-neutral-900">
+            <h2 className="mt-1 text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
               Featured products
             </h2>
           </div>
@@ -165,8 +269,8 @@ export default function HomePage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {products.map((product) => (
+          <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+            {products.map((product: any) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
