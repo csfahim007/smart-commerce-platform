@@ -108,5 +108,23 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 10028
           script: |
+            echo "===== REMOTE SSH DIAGNOSTIC ====="
+            echo "USER=$(whoami)"
+            echo "UID=$(id -u)"
+            echo "GROUPS=$(id -Gn)"
+            echo "HOME=$HOME"
+            echo "TTY=$(tty || true)"
+            echo "SUDO=$(command -v sudo || true)"
+            echo "SYSTEMCTL=$(command -v systemctl || true)"
+            echo "===== SUDO LIST ====="
+            sudo -n -l || true
+            echo "===== API SUDO TEST ====="
+            sudo -n systemctl restart ai-ecommerce-api.service
+            echo "restart_exit=$?"
+            echo "===== API STATUS ====="
+            sudo -n systemctl is-active ai-ecommerce-api.service
+            echo "status_exit=$?"
+            echo "===== END DIAGNOSTIC ====="
+
             cd /home/administrator/projects/ai-ecommerce-platform
             ./scripts/deploy.sh
