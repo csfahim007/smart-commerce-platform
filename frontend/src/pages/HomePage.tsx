@@ -98,39 +98,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Calligraphic design */}
           <div className="hidden flex-1 lg:block">
-            <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center">
-              <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md" />
-              <div className="absolute inset-6 rounded-2xl border border-white/10" />
-
-              <div className="relative z-10 select-none text-center">
-                <p
-                  className="text-5xl font-light tracking-wide text-white/90"
-                  style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontStyle: 'italic' }}
-                >
-                  Discover
-                </p>
-                <p
-                  className="mt-1 text-6xl font-light leading-none text-transparent"
-                  style={{
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontStyle: 'italic',
-                    background: 'linear-gradient(135deg, #e9d5ff 0%, #ffffff 50%, #a5f3fc 100%)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  Beauty
-                </p>
-                <div className="mx-auto mt-4 h-px w-16 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                <p
-                  className="mt-4 text-sm tracking-[0.35em] text-white/50 uppercase"
-                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                >
-                  Curated for you
-                </p>
-              </div>
+            <div className="relative mx-auto flex max-w-md items-center justify-center">
+              <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md" />
+              <img
+                src="/umut-hasanoglu-A6BpGxYBBso-unsplash.jpg"
+                alt="AI ecommerce shopping experience"
+                className="relative z-10 h-[420px] w-full rounded-[2rem] object-cover shadow-2xl shadow-violet-500/10"
+              />
             </div>
           </div>
         </div>
