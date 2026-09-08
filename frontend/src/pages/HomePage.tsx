@@ -43,22 +43,19 @@ export default function HomePage() {
   return (
     <div className="space-y-12 overflow-x-hidden px-4 pb-10 sm:space-y-16 sm:px-0">
       {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden rounded-3xl bg-neutral-950 text-white">
+      <section className="relative overflow-hidden rounded-3xl bg-[#1a1a1a] text-white">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900 to-violet-950/80" />
-          <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-violet-600/30 blur-[100px]" />
-          <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-cyan-500/25 blur-[90px]" />
-          <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-[80px]" />
-          <div className="absolute -bottom-20 right-1/4 h-56 w-56 rounded-full bg-blue-500/15 blur-[70px]" />
+          <div className="absolute inset-0 bg-[#1a1a1a]" />
+          <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-neutral-700/20 blur-[90px]" />
+          <div className="absolute bottom-0 right-10 h-72 w-72 rounded-full bg-neutral-600/10 blur-[100px]" />
           <div
-            className="absolute inset-0 opacity-[0.06]"
+            className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage:
                 'linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px)',
               backgroundSize: '40px 40px',
             }}
           />
-          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-violet-500/10 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 flex flex-col gap-10 px-5 py-14 sm:px-10 sm:py-16 lg:flex-row lg:items-center lg:gap-16 lg:px-16 lg:py-24">
@@ -99,12 +96,12 @@ export default function HomePage() {
           </div>
 
           <div className="hidden flex-1 lg:block">
-            <div className="relative mx-auto flex max-w-md items-center justify-center">
+            <div className="relative mx-auto flex max-w-[360px] items-center justify-center">
               <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md" />
               <img
                 src="/umut-hasanoglu-A6BpGxYBBso-unsplash.jpg"
                 alt="AI ecommerce shopping experience"
-                className="relative z-10 h-[420px] w-full rounded-[2rem] object-cover shadow-2xl shadow-violet-500/10"
+                className="relative z-10 h-[360px] w-full rounded-[2rem] object-cover opacity-80 shadow-2xl shadow-black/30"
               />
             </div>
           </div>
