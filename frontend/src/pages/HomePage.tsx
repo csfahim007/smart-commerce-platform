@@ -60,10 +60,9 @@ export default function HomePage() {
 
         <div className="relative z-10 flex flex-col gap-10 px-5 py-14 sm:px-10 sm:py-16 lg:flex-row lg:items-center lg:gap-16 lg:px-16 lg:py-24">
           <div className="max-w-xl flex-1">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-violet-300" />
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-neutral-300">
               AI-powered shopping
-            </div>
+            </p>
 
             <h1 className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Discover products
