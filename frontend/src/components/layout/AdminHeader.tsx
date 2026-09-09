@@ -39,9 +39,11 @@ export default function AdminHeader() {
           to="/admin"
           className="flex items-center gap-2 font-bold tracking-tight text-neutral-950"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-950 text-xs font-bold text-white">
-            AI
-          </span>
+          <img
+            src="/ai-ecom.svg"
+            alt="AI Commerce"
+            className="h-8 w-8 object-contain"
+          />
 
           <span>Commerce Admin</span>
         </Link>

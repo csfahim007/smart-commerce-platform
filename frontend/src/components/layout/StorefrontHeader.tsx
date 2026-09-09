@@ -47,9 +47,11 @@ export default function StorefrontHeader() {
           to="/"
           className="flex shrink-0 items-center gap-2 text-lg font-bold tracking-tight text-neutral-950"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-950 text-white">
-            AI
-          </span>
+          <img
+            src="/ai-ecom.svg"
+            alt="AI Commerce"
+            className="h-8 w-8 object-contain"
+          />
 
           <span className="hidden sm:inline">AI Commerce</span>
         </Link>
