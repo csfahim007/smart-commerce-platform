@@ -32,7 +32,7 @@ export default function StorefrontHeader() {
     : []
 
   const cartItemCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
+    (total: any, item : any) => total + item.quantity,
     0,
   )
 
