@@ -2,6 +2,7 @@ import { LogOut, Menu, ShoppingBag } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { useUIStore } from '../../stores/ui.store'
+import aiEcomLogo from './ai-ecom.svg'
 
 function navClass({
   isActive,
@@ -40,7 +41,7 @@ export default function AdminHeader() {
           className="flex items-center gap-2 font-bold tracking-tight text-neutral-950"
         >
           <img
-            src="/ai-ecom.svg"
+            src={aiEcomLogo}
             alt="AI Commerce"
             className="h-8 w-8 object-contain"
           />

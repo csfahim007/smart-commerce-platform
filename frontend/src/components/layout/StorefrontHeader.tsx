@@ -3,6 +3,7 @@ import { ShoppingBag, Sparkles, User, LogOut, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useCartQuery } from '../../hooks/queries/cart'
 import { useUIStore } from '../../stores/ui.store'
+import aiEcomLogo from './ai-ecom.svg'
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
   return [
@@ -47,8 +48,8 @@ export default function StorefrontHeader() {
           to="/"
           className="flex shrink-0 items-center gap-2 text-lg font-bold tracking-tight text-neutral-950"
         >
-          <img
-            src="/ai-ecom.svg"
+         <img
+            src={aiEcomLogo}
             alt="AI Commerce"
             className="h-8 w-8 object-contain"
           />
